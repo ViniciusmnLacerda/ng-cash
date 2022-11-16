@@ -1,12 +1,12 @@
 const { userModel } = require('../models');
 const {  validateUsername, validatePassword, validatelogin } = require('./validations/userValidations')
 
-const getUsers = async (user) => {
+const login = async (user) => {
   const { type, message } = await validatelogin(user);
   if (type) return { type, message }
-  const users = await userModel.getUsers();
-  return { type: null, message: users };
-};
+  const response = await userModel.login(user);
+  return { type: null, message: response };
+}
 
 const signUp = async (user) => {
   const isValidUsername = await validateUsername(user);
@@ -18,6 +18,6 @@ const signUp = async (user) => {
 };
 
 module.exports = {
-  getUsers,
   signUp,
+  login,
 };

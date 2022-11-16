@@ -1,15 +1,23 @@
 const { PrismaClient } = require('@prisma/client');
 const hashPassword = require('../utils/hashPassword');
+const jwt = require('jsonwebtoken');
+
 const prisma = new PrismaClient();
+
+const SECRET = 'ngcash';
+const twentyFourHours = 86400;
 
 const getUsers = async () => {
   const users = await prisma.users.findMany();
   return users;
 };
 
-const signIn = () => {
-  
-  return { message: { isLoginValid: true } }
+const login = async (user) => {
+  const userWhoWantsTologin = await prisma.users
+    .findMany({ where: { username: user.username }});
+  const userId = userWhoWantsTologin[0].accountId;
+  const token = jwt.sign({ userId }, SECRET, { expiresIn: twentyFourHours });
+  return { auth: true, token };
 }
 
 const insertAccount = async () => {
@@ -38,5 +46,5 @@ const signUp = async (user) => {
 module.exports = {
   getUsers,
   signUp,
-  signIn,
+  login,
 };

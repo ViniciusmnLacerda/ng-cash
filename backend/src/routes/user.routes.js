@@ -4,7 +4,7 @@ const { validateUser } = require('../middlewares/user.middleware');
 
 const route = express.Router();
 
-route.get('/login', validateUser ,userController.getUsers)
+route.post('/login', validateUser ,userController.login)
 
 route.post('/signup', validateUser ,userController.signUp)
 

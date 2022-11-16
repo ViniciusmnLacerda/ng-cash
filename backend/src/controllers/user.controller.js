@@ -1,11 +1,11 @@
 const { userService } = require('../services');
 const mapError = require('../utils/mapError');
 
-const getUsers = async (req, res) => {
+const login = async (req, res) => {
   const user = req.body;
-  const { message } = await userService.getUsers(user);
+  const { message } = await userService.login(user);
   res.status(200).json({ message });
-};
+}
 
 const signUp = async (req, res) => {
   const user = req.body;
@@ -15,6 +15,6 @@ const signUp = async (req, res) => {
 }
 
 module.exports = {
-  getUsers,
   signUp,
+  login, 
 };
