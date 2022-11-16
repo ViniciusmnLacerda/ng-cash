@@ -33,11 +33,6 @@ function Login() {
       history.push(`/home/${userId}`);
     } else {
       setAreCredentialValid(true);
-      setUser({
-        ...user,
-        username: '',
-        passoword: '',
-      });
     }
   };
 
@@ -48,6 +43,7 @@ function Login() {
     ].every(Boolean);
     if (isLoginValid) setIsBtnDisabled(false);
     else setIsBtnDisabled(true);
+    setAreCredentialValid(false);
   }, [user]);
 
   return (
