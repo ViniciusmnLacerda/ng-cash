@@ -19,7 +19,7 @@ const validatePassword = async ({ password }) => {
 const validatelogin = async ({ username, password }) => {
   const users = await userModel.getUsers();
   const user = users.find((u) => u.username === username);
-  if (user === null) return { type: 'INVALID_VALUE', message: 'Username or password are invalid' }
+  if (!user) return { type: 'INVALID_VALUE', message: 'Username or password are invalid' }
   if (await bcrypt.compare(password, user.password)) return { type: null, message: '' };
   return { type: 'INVALID_VALUE', message: 'Username or password are invalid' }
 }

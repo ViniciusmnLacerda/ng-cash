@@ -2,9 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-const getTransactions = async ({ username }) => {
+const getTransactions = async (accountId) => {
   const transactions = await prisma.transactions.findMany();
-  const [{ accountId }] = await prisma.users.findMany({ where: { username }});
   const result = transactions.filter((transaction) => 
     transaction.debitedAccountId === accountId || transaction.creditedAccountId === accountId);
   result.map((transaction) => transaction.value = ( transaction.value / 100 ))
@@ -65,7 +64,7 @@ const transfer = async (request) => {
     },
   });
 
-  return `Transfer from ${request.userDebited} to ${request.userDebited} successfully completed`;
+  return `Transfer from ${request.userDebited} to ${request.userCredited} successfully completed`;
 };
 
 module.exports = {

@@ -3,8 +3,9 @@ const mapError = require('../utils/mapError');
 
 const login = async (req, res) => {
   const user = req.body;
-  const { message } = await userService.login(user);
-  res.status(200).json({ message });
+  const { type, message } = await userService.login(user);
+  if(type) return res.status(mapError(type)).json({ message });
+  res.status(200).json(message);
 }
 
 const signUp = async (req, res) => {

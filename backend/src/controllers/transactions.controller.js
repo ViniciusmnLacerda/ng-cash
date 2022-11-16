@@ -2,9 +2,9 @@ const { transactionsService } = require('../services');
 const mapError = require('../utils/mapError');
 
 const getTransactions = async (req, res) => {
-  const user = req.body
-  const { message } = await transactionsService.getTransactions(user);
-  res.status(200).json({ message })
+  const { id } = req.params;
+  const { message } = await transactionsService.getTransactions(+id);
+  res.status(200).json(message)
 };
 
 const transfer = async (req, res) => {

@@ -1,4 +1,4 @@
-const { transferSchema } = require('../utils/schemas');
+const { transferSchema, getTransactionsSchema } = require('../utils/schemas');
 const mapError = require('../utils/mapError');
 const jwt = require('jsonwebtoken');
 

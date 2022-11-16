@@ -17,13 +17,13 @@ const login = async (user) => {
     .findMany({ where: { username: user.username }});
   const userId = userWhoWantsTologin[0].accountId;
   const token = jwt.sign({ userId }, SECRET, { expiresIn: twentyFourHours });
-  return { auth: true, token };
+  return { token, userId };
 }
 
 const insertAccount = async () => {
 const { id } =  await prisma.accounts.create({
     data: {
-      balance: 100.00,
+      balance: 10000,
     }
   });
 return id;
