@@ -6,4 +6,6 @@ const route = express.Router();
 
 route.get('/', verifyJwt, transactionsController.getTransactions);
 
+route.post('/', verifyJwt, transactionsController.transfer);
+
 module.exports = route;

@@ -29,9 +29,9 @@ model Users {
 model Transactions {
   id Int @id @default(autoincrement())
   debitedAccount Accounts @relation( "debited", fields: [debitedAccountId], references: [id])
-  debitedAccountId Int @unique
+  debitedAccountId Int 
   creditedAccount Accounts @relation("credited", fields: [creditedAccountId], references: [id])
-  creditedAccountId Int @unique 
+  creditedAccountId Int 
   value Decimal
   createdAt DateTime @default(now())
 }
