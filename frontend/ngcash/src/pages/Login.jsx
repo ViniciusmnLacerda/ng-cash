@@ -30,7 +30,7 @@ function Login() {
         userId,
       });
 
-      history.push(`/home/${userId}`);
+      history.push(`ngcash/home/${userId}`);
     } else {
       setAreCredentialValid(true);
     }
