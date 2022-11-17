@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
+import getBalance from '../services/getBalance';
+import getTransactions from '../services/getTransactions';
 import postTransaction from '../services/postTransaction';
 
 function Payment() {
-  const { user: { username, token } } = useContext(Context);
+  const { user, setUser, setTransactions } = useContext(Context);
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const [transactionMessage, setTransactionMessage] = useState();
   const [transaction, setTransaction] = useState({
     userCredited: '',
-    userDebited: username,
+    userDebited: user.username,
     value: '',
   });
 
@@ -21,8 +23,10 @@ function Payment() {
   };
 
   const handleClick = async () => {
-    const { message } = await postTransaction(transaction, token);
+    const { message } = await postTransaction(transaction, user.token);
     setTransactionMessage(message);
+    getBalance(user, setUser);
+    getTransactions(user.userId, user.token, setTransactions);
   };
 
   useEffect(() => {

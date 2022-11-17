@@ -9,15 +9,27 @@ function Provider({ children }) {
     password: '',
     token: '',
     userId: '',
+    balance: '',
   });
 
   const [transactions, setTransactions] = useState([]);
+
+  const [transactionsToRender, setTransactionToRender] = useState([]);
+
+  const [filters, setFilters] = useState({
+    type: 'all',
+    date: '',
+  });
 
   const value = {
     user,
     setUser,
     transactions,
     setTransactions,
+    transactionsToRender,
+    setTransactionToRender,
+    filters,
+    setFilters,
   };
 
   return (
