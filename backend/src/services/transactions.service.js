@@ -6,8 +6,8 @@ const {
   validateUsername,
 } = require('./validations/transactionsValidations');
 
-const getTransactions = async (user) => {
-  const transactions = await transactionsModel.getTransactions(user);
+const getTransactions = async (accountId) => {
+  const transactions = await transactionsModel.getTransactions(accountId);
   return { type: null, message: transactions };
 };
 
