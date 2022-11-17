@@ -28,6 +28,9 @@
   border: none;
   background-color: unset;
 }
+.payment-header button:hover {
+  cursor: pointer;
+}
 
 .payment-header button svg {
   width: 23px;
