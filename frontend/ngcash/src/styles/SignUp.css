@@ -1,0 +1,25 @@
+.signup-h {
+  height: 15%;
+}
+
+.signup-f {
+  height: 65%;
+}
+
+.signup-f form p {
+  width: 80%;
+  font-size: 0.9rem;
+}
+
+.wrong {
+  color: rgb(255, 102, 102);
+}
+
+.right {
+  color: green;
+}
+
+.signup-f form p svg {
+  width: 10px;
+  height: 10px;
+}

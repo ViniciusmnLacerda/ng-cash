@@ -4,6 +4,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { Link, useHistory } from 'react-router-dom';
 import Context from '../context/Context';
 import postLogin from '../services/postLogin';
+import '../styles/Login.css';
 
 function Login() {
   const { user, setUser } = useContext(Context);
@@ -49,31 +50,39 @@ function Login() {
   return (
     <div className="login-container">
       <main className="login-card">
-        <form className="login-form">
-          <label htmlFor="username">
-            <AiOutlineUser fontSize={22} />
-            <input
-              autoComplete="off"
-              placeholder="Nome de usuário"
-              type="text"
-              value={user.username}
-              onChange={(event) => handleChange(event)}
-              id="username"
-              name="username"
-            />
-          </label>
-          <label htmlFor="password">
-            <RiLockPasswordLine fontSize={22} />
-            <input
-              autoComplete="off"
-              placeholder="Sua senha aqui"
-              type="password"
-              value={user.password}
-              onChange={(event) => handleChange(event)}
-              id="password"
-              name="password"
-            />
-          </label>
+        <div className="login-header">
+          <h1>NG.CASH</h1>
+        </div>
+        <section className="login-form">
+          <form>
+            <label htmlFor="username">
+              <AiOutlineUser fontSize={22} />
+              <input
+                autoComplete="off"
+                placeholder="Nome de usuário"
+                type="text"
+                value={user.username}
+                onChange={(event) => handleChange(event)}
+                id="username"
+                name="username"
+              />
+            </label>
+            <label htmlFor="password">
+              <RiLockPasswordLine fontSize={22} />
+              <input
+                autoComplete="off"
+                placeholder="Sua senha aqui"
+                type="password"
+                value={user.password}
+                onChange={(event) => handleChange(event)}
+                id="password"
+                name="password"
+              />
+            </label>
+          </form>
+          <p className="alert">{areCredentialValid && 'Senha ou nome de usuários estão incorretos'}</p>
+        </section>
+        <div className="btn-login">
           <button
             data-testid="login-submit-btn"
             type="button"
@@ -82,10 +91,13 @@ function Login() {
           >
             entrar
           </button>
-        </form>
-        <p>{areCredentialValid && 'Senha ou nome de usários estão incorretos'}</p>
+          <button
+            type="button"
+          >
+            <Link to="/ngcash/signup">Criar conta</Link>
+          </button>
+        </div>
       </main>
-      <Link to="/ngcash/signup">Criar conta</Link>
     </div>
   );
 }
