@@ -5,7 +5,6 @@ const userSchema = Joi.object({
   password: Joi.string().min(8).required(),
 });
 
-
 const transferSchema = Joi.object({
   value: Joi.number().required().required(),
   userDebited: Joi.string().min(3).required(),
@@ -15,12 +14,7 @@ const transferSchema = Joi.object({
   }).required(),
 });
 
-const getTransactionsSchema = Joi.object({
-  username: Joi.string().min(3).required(),
-});
-
 module.exports = {
   userSchema,
   transferSchema,
-  getTransactionsSchema,
 };

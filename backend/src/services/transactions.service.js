@@ -3,11 +3,19 @@ const {
   validateUserToCredited,
   validateBalance,
   validateUserTodebited,
+  validateUsername,
 } = require('./validations/transactionsValidations');
 
 const getTransactions = async (user) => {
   const transactions = await transactionsModel.getTransactions(user);
   return { type: null, message: transactions };
+};
+
+const getBalance = async (id) => {
+  const { type, message } = validateUsername(id)
+  if (type) return { type, message };
+  const balance = await transactionsModel.findBalance(id);
+  return { type: null, message: balance };
 };
 
 const transfer = async (request) => {
@@ -27,4 +35,5 @@ const transfer = async (request) => {
 module.exports = {
   getTransactions,
   transfer,
+  getBalance,
 }

@@ -10,6 +10,11 @@ const getTransactions = async (accountId) => {
   return result;
 };
 
+  const findBalance = async (id) => {
+    const [{ balance }] = await prisma.accounts.findMany({ where: { id }});
+    return balance;
+  }
+
 const getBalance = async (username) => {
   const [{ accountId: id }] = await prisma.users.findMany({ where: { username }});
   const [{ balance }]  = await prisma.accounts.findMany({ where: { id }});
@@ -70,5 +75,5 @@ const transfer = async (request) => {
 module.exports = {
   getTransactions,
   transfer,
-  getBalance,
+  findBalance,
 }

@@ -1,5 +1,12 @@
 const { transactionsModel, userModel } = require('../../models');
 
+const validateUsername = async (id) => {
+  const users = await userModel.getUsers();
+  const userIsValid = users.some((user) => user.accountId === id);
+  if (!userIsValid) return { type: 'INVALID_VALUE', message: 'User not found' };
+  return { type: null, message: '' };
+};
+
 const validateUserToCredited = async ({ userCredited }) => {
   const users = await userModel.getUsers();
   const userIsValid = users.some((user) => user.username === userCredited);
@@ -25,4 +32,5 @@ module.exports = {
   validateUserToCredited,
   validateBalance,
   validateUserTodebited,
+  validateUsername,
 }

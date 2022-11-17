@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const { getBalance } = require('./transactions.model');
 const hashPassword = require('../utils/hashPassword');
 const jwt = require('jsonwebtoken');
 
@@ -13,13 +12,12 @@ const getUsers = async () => {
   return users;
 };
 
-const login = async ({ username }) => {
-  const { balance } = await getBalance(username)
+const login = async (user) => {
   const userWhoWantsTologin = await prisma.users
-    .findMany({ where: { username }});
+    .findMany({ where: { username: user.username }});
   const userId = userWhoWantsTologin[0].accountId;
   const token = jwt.sign({ userId }, SECRET, { expiresIn: twentyFourHours });
-  return { token, userId, balance: (balance / 100) };
+  return { token, userId };
 }
 
 const insertAccount = async () => {
