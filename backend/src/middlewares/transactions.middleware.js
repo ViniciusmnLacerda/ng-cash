@@ -19,7 +19,6 @@ const verifyTransaction = async (req, res, next) => {
   const { error } = transferSchema.validate({ value, userCredited, userDebited });
   if (error) {
     const { type } = error.details[0];
-    console.log(type);
     const { message } = error.details[0];
     return res.status(mapError(type)).json({ message });
   }

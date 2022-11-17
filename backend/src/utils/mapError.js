@@ -4,6 +4,7 @@ const errorsMap = {
   'any.required': 400,
   'string.required': 400,
   'string.base': 422,
+  'any.invalid': 422,
 }
 
 const mapError = (type) => errorsMap[type] || 500;
