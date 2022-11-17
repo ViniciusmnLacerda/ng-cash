@@ -64,9 +64,9 @@ function SignUp() {
   return (
     <div className="login-container">
       <main className="login-card">
-        <div className="login-header signup-h">
+        <header className="login-header signup-h">
           <h1>NG.CASH</h1>
-        </div>
+        </header>
         <section className="login-form signup-f">
           <form>
             <label htmlFor="username">

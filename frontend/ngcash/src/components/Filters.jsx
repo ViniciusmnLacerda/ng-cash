@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import Context from '../context/Context';
+import '../styles/Filters.css';
 import formatDate from '../utils/formatDate';
 
 function Filters() {
@@ -42,11 +43,11 @@ function Filters() {
   }, [filters]);
 
   return (
-    <section>
-      <h3>Filters</h3>
+    <section className="filters">
       <form>
         <label htmlFor="type">
           <select
+            className="filter"
             name="type"
             id="type"
             onChange={(e) => handleChange(e)}
@@ -65,6 +66,7 @@ function Filters() {
         </label>
         <label htmlFor="date">
           <input
+            className="filter"
             type="date"
             name="date"
             id="date"

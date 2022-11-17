@@ -50,9 +50,9 @@ function Login() {
   return (
     <div className="login-container">
       <main className="login-card">
-        <div className="login-header">
+        <header className="login-header">
           <h1>NG.CASH</h1>
-        </div>
+        </header>
         <section className="login-form">
           <form>
             <label htmlFor="username">

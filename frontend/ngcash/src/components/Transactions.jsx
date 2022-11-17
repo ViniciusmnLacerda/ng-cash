@@ -1,7 +1,10 @@
 import React, { useContext, useEffect } from 'react';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import Context from '../context/Context';
 import getTransactions from '../services/getTransactions';
+import '../styles/Transactions.css';
 import formatDate from '../utils/formatDate';
+import formatValue from '../utils/formatValues';
 
 function Transactions() {
   const {
@@ -22,19 +25,30 @@ function Transactions() {
   }, []);
 
   return (
-    <div>
-      <h3>Transactions</h3>
-      {transactionsToRender.map(({
-        id, usernameCredited, usernameDebited, value, createdAt,
-      }, index) => (
-        <section key={id}>
-          <p>{`Transação ${index + 1}`}</p>
-          <p>{`Valor: ${usernameDebited === username ? '(-)' : '(+)'} R$ ${value}`}</p>
-          <p>{`${usernameDebited === username ? `Para: ${usernameCredited}` : `De: ${usernameDebited}`}`}</p>
-          <p>{`data: ${formatDate(createdAt.split('T', 2)[0])}`}</p>
-        </section>
-      ))}
-    </div>
+    <article className="transactions">
+      <div className="header-transactions">
+        <h3>Transações</h3>
+      </div>
+      <main className="transactions-container">
+        {transactionsToRender.map(({
+          id, usernameCredited, usernameDebited, value, createdAt,
+        }) => (
+          <section
+            className={usernameDebited === username ? 'cashout' : 'cashin'}
+            key={id}
+          >
+            {usernameDebited === username ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
+            <div>
+              <p>{`R$ ${formatValue(value)}`}</p>
+            </div>
+            <div>
+              <p>{`${usernameDebited === username ? usernameCredited : usernameDebited}`}</p>
+            </div>
+            <p>{formatDate(createdAt.split('T', 2)[0])}</p>
+          </section>
+        ))}
+      </main>
+    </article>
   );
 }
 

@@ -1,0 +1,41 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-header {
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-header h1 {
+  color: white;
+}
+
+.balance {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  justify-content: space-evenly;
+}
+
+.balance button {
+  border: none;
+  background-color: unset;
+}
+
+.balance button:hover {
+  cursor: pointer;
+}
+
+.balance button svg {
+  width: 23px;
+  height: 23px;
+}

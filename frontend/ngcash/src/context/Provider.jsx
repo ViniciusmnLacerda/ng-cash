@@ -16,6 +16,8 @@ function Provider({ children }) {
 
   const [transactionsToRender, setTransactionToRender] = useState([]);
 
+  const [areYouDoingATransaction, setAreYouDoingATransaction] = useState(false);
+
   const [filters, setFilters] = useState({
     type: 'all',
     date: '',
@@ -30,6 +32,8 @@ function Provider({ children }) {
     setTransactionToRender,
     filters,
     setFilters,
+    areYouDoingATransaction,
+    setAreYouDoingATransaction,
   };
 
   return (

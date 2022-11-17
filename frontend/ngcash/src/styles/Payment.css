@@ -1,0 +1,113 @@
+.payment {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(0,0,0,.8);
+  z-index: 1;
+}
+
+.payment-content {
+  width: 90%;
+  height: 95%;
+  background-color: white;
+  padding: 10px;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60px;
+  border-bottom: 1px solid gray;
+}
+
+.payment-header button {
+  border: none;
+  background-color: unset;
+}
+
+.payment-header button svg {
+  width: 23px;
+  height: 23px;
+}
+
+.payment-content main {
+  width: 100%;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.payment-form {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.payment-form label, .payment-form label input {
+  width: 100%;
+  height: 30px;
+}
+
+.payment-form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  width: 85%;
+}
+
+.payment-form label svg {
+  position: absolute;
+  left: 10px;
+}
+
+.payment-form label input {
+  width: 100%;
+  height: 40px;
+  border: unset;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 13px;
+  padding-left: 40px;
+  letter-spacing: 1px;
+}
+
+.btn-payment {
+  width: 80%;
+  height: 40px;
+  border-radius: 8px;
+  position: relative;
+  border: 1px solid black;
+  color: black;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: unset;
+}
+
+.btn-payment:disabled {
+  opacity: 0.3;
+  border: 1px solid grey;
+  cursor: progress;
+}
+
+.btn-payment:not(:disabled):hover {
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 650px) {
+  .payment-content {
+    max-width: 650px;
+    height: 90%;
+  }
+}

@@ -1,0 +1,38 @@
+.transactions {
+  width: 100%;
+  max-width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.header-transactions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transactions-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions-container section {
+  padding: 20px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+}
+
+.cashin svg, .cashin p {
+  color: green;
+}
+
+.cashout svg, .cashout p {
+  color: rgb(255, 102, 102);
+}
+
+.transactions-container section div {
+  width: 120px;
+}

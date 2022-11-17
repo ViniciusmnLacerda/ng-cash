@@ -1,24 +1,40 @@
 import React, { useContext, useEffect } from 'react';
+import { GrTransaction } from 'react-icons/gr';
 import Filters from '../components/Filters';
 import Payment from '../components/Payment';
 import Transactions from '../components/Transactions';
 import Context from '../context/Context';
 import getBalance from '../services/getBalance';
+import '../styles/Home.css';
+import formatValue from '../utils/formatValues';
 
 function Home() {
-  const { user, setUser } = useContext(Context);
+  const {
+    user, setUser, areYouDoingATransaction,
+    setAreYouDoingATransaction,
+  } = useContext(Context);
 
   useEffect(() => {
     getBalance(user, setUser);
   }, []);
 
   return (
-    <div>
-      <h1>{`Saldo - Bem Vindo ${user.username}`}</h1>
-      <h2>{`Balance R$ ${user.balance}`}</h2>
+    <div className="home-container">
+      <header className="home-header">
+        <h1>{`Bem Vindo ${user.username}`}</h1>
+      </header>
+      <section className="balance">
+        <h2>{`Saldo: R$ ${formatValue(user.balance)}`}</h2>
+        <button
+          type="button"
+          onClick={() => setAreYouDoingATransaction(true)}
+        >
+          <GrTransaction />
+        </button>
+      </section>
       <Filters />
       <Transactions />
-      <Payment />
+      { areYouDoingATransaction && <Payment />}
     </div>
   );
 }
