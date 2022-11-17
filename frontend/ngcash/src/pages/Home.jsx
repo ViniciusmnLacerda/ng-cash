@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import Payment from '../components/Payment';
+import Transactions from '../components/Transactions';
 import Context from '../context/Context';
-import getTransactions from '../services/getTransactions';
 
 function Home() {
-  const { user: { userId, token }, setTransactions } = useContext(Context);
-
-  useEffect(() => {
-    getTransactions(userId, token, setTransactions);
-  }, []);
+  const { user: { username } } = useContext(Context);
 
   return (
-    <div>Home</div>
+    <div>
+      <h1>{`Home - Bem Vindo ${username}`}</h1>
+      <Transactions />
+      <Payment />
+    </div>
   );
 }
 
