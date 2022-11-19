@@ -14,6 +14,7 @@ function Payment() {
     setUser,
     setTransactions,
     setAreYouDoingATransaction,
+    setTransactionToRender,
   } = useContext(Context);
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const [transactionMessage, setTransactionMessage] = useState();
@@ -35,7 +36,9 @@ function Payment() {
     const { message } = await postTransaction(transaction, user.token);
     setTransactionMessage(message);
     getBalance(user, setUser);
-    getTransactions(user.userId, user.token, setTransactions);
+    const transactions = await getTransactions(user.userId, user.token);
+    setTransactionToRender(transactions);
+    setTransactions(transactions);
   };
 
   useEffect(() => {

@@ -7,8 +7,10 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://admin:admin@localhost:5432"
+  url      = "postgresql://admin:admin@db:5432/ng-cash?schema=public"
 }
+
+
 
 model Accounts {
   id Int @id @default(autoincrement())
