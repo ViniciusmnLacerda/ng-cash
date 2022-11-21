@@ -42,6 +42,10 @@ function Filters() {
     filterTransactions();
   }, [filters]);
 
+  useEffect(() => () => {
+    setFilters({ type: 'all', date: '' });
+  }, []);
+
   return (
     <section className="filters">
       <form>
