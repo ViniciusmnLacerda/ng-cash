@@ -21,6 +21,16 @@ function Login() {
     });
   };
 
+  useEffect(() => {
+    setUser({
+      username: '',
+      password: '',
+      token: '',
+      userId: '',
+      balance: '',
+    });
+  }, []);
+
   const handleClick = async () => {
     const { token, userId } = await postLogin(user);
     if (token.length > 0) {

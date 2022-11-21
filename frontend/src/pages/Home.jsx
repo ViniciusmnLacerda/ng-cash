@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { GrTransaction } from 'react-icons/gr';
+import { Link } from 'react-router-dom';
 import Filters from '../components/Filters';
 import Payment from '../components/Payment';
 import Transactions from '../components/Transactions';
@@ -22,6 +23,7 @@ function Home() {
     <div className="home-container">
       <header className="home-header">
         <h1>{`Bem Vindo ${user.username}`}</h1>
+        <Link to="/">Sair</Link>
       </header>
       <section className="balance">
         <h2>{`Saldo: R$ ${formatValue(user.balance)}`}</h2>
