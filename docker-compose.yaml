@@ -3,14 +3,14 @@ services:
   front:
     image: node:16-alpine
     
+    build: ./frontend
+
     container_name: ng_front
     working_dir: /app
     restart: on-failure
 
     stdin_open: true
     tty: true
-
-    command: sh
 
     environment:
       - API_HOST=back
@@ -21,7 +21,7 @@ services:
     depends_on:
       - back
     volumes:
-      - ./frontend/ngcash:/app
+      - ./frontend:/app
   back:
     image: node:16-alpine
     
