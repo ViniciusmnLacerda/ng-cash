@@ -9,7 +9,6 @@ const login = async (req, res) => {
 }
 
 const signUp = async (req, res) => {
-  console.log('CONTROOLER');
   const user = req.body;
   const { type, message } = await userService.signUp(user);
   if(type) return res.status(mapError(type)).json({ message });
