@@ -10,8 +10,6 @@ datasource db {
   url      = "postgresql://admin:admin@db:5432/ng-cash?schema=public"
 }
 
-
-
 model Accounts {
   id Int @id @default(autoincrement())
   balance Decimal

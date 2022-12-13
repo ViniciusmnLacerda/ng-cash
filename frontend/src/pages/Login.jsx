@@ -61,7 +61,7 @@ function Login() {
     <div className="login-container">
       <main className="login-card">
         <header className="login-header">
-          <h1>NG.CASH</h1>
+          <h1>TRANSFERS APP</h1>
         </header>
         <section className="login-form">
           <form>
